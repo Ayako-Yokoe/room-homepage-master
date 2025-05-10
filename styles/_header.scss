@@ -1,0 +1,121 @@
+@use "variables";
+@use "typography";
+@use "mixins";
+
+.header {
+  background-color: transparent;
+  padding: 3rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    &-open {
+      display: block;
+      flex-shrink: 0;
+    }
+
+    &-logo {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: variables.$white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 3rem 2rem;
+      z-index: 30;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+
+      &.active {
+        transform: translateY(0);
+      }
+    }
+
+    &-list {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      align-items: center;
+
+      li {
+        text-transform: lowercase;
+        font-weight: typography.$font700;
+        padding: 0.5rem 0;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+          .header__nav-list-indicator {
+            width: 50%;
+            left: 25%;
+          }
+        }
+      }
+
+      &-indicator {
+        position: absolute;
+        left: 50%;
+        bottom: -0.5rem;
+        width: 0;
+        height: 2px;
+        background-color: variables.$white;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@include mixins.respond-to("md") {
+  .header {
+    padding: 3.5rem 4rem;
+
+    &__nav {
+      justify-content: flex-start;
+      gap: 4rem;
+  
+      &-open, &-close {
+        display: none;
+      }
+
+      &-logo {
+        flex: 0;
+        
+        img {
+          width: 5rem;
+        }
+      }
+
+      &-menu {
+        transform: none;
+        background-color: transparent;
+        color: variables.$white;
+        flex: 0;
+        position: static;
+        padding: 0;
+      }
+
+      &-list {
+        gap: 2rem;
+  
+        li {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

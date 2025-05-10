@@ -1,0 +1,15 @@
+$breakpoints: (
+  "md": 768px,
+);
+
+@mixin respond-to($breakpoint) {
+  @if(map-has-key($breakpoints,$breakpoint)) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+
+// Referenes: CSS Tricks
+// https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/

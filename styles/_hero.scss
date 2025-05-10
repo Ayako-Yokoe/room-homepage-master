@@ -1,0 +1,141 @@
+@use "typography";
+@use "variables";
+@use "mixins";
+
+.slide-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-contents {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  min-width: 100vw;
+}
+
+.slide-content {
+  flex:  0 0 100%;
+  width: 100%;
+}
+
+.slide-content-text {
+  margin: 4rem 2rem 3rem 2rem;
+
+  &-title {
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    font-weight: typography.$font700;
+    font-size: 2rem;
+  }
+
+  &-description {
+    color: variables.$grey500;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  &-button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+
+    &-button {
+      text-transform: uppercase;
+      font-weight: typography.$font600;
+      font-size: 1rem;
+      letter-spacing: 0.8rem;
+      transition: color 0.3s ease-in-out;
+    }
+
+    img {
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
+
+  &-button-wrapper:hover {
+    .slide-content-text-button-wrapper-button {
+      color: variables.$grey500;
+    }
+
+    img {
+      opacity: 0.3;
+    }
+  }
+}
+
+.slide-content-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.slide-arrays {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 41.5%;
+  right: 0;
+  transform: translateY(-41.5%);
+
+  &-button {
+    background-color: variables.$black;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &-button:hover {
+    background-color: variables.$grey800;
+  }
+
+  img {
+    width: 10px;
+    height: auto;
+  }
+}
+
+@include mixins.respond-to("md") {
+  .slide-content {
+    display: flex;
+    height: 66.66vh;
+
+    &-image {
+      flex: 2.1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .slide-content-text {
+    flex: 0.9;
+    margin: 8rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &-title {
+      line-height: 1.3;
+      font-size: 2.3rem;
+    }
+  }
+
+  .slide-arrays {
+    top: auto;
+    bottom: -2rem;
+    right: calc(100% / 3 - 3.5rem);
+
+    &-button {
+      padding: 1.3rem 1.5rem;
+
+      img {
+        width: 12px;
+      }
+    }
+  }
+}

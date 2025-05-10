@@ -1,0 +1,55 @@
+@use "typography";
+@use "variables";
+@use "mixins";
+
+.about {
+  &__image-dark {
+    display: block;
+    width: 100%;
+    height: 14rem;
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  &__text {
+    margin: 3rem 2rem;
+
+    &-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      font-weight: typography.$font700;
+      margin-bottom: 1rem;
+    }
+
+    &-description {
+      color: variables.$grey500;
+      line-height: 1.4;
+    }
+  }
+
+  &__image-light {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@include mixins.respond-to("md") {
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    height: 33.33vh;
+
+    &__image-dark {
+      height: 100%;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }  
+  }
+}
