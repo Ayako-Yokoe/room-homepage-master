@@ -124,7 +124,7 @@ p {
     flex: 0;
   }
   .header__nav-logo img {
-    width: 5rem;
+    width: 4.5rem;
   }
   .header__nav-menu {
     transform: none;
@@ -138,7 +138,7 @@ p {
     gap: 2rem;
   }
   .header__nav-list li {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 }
 .slide-container {
